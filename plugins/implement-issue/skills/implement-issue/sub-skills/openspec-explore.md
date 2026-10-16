@@ -1,0 +1,95 @@
+# Sub-Skill: OpenSpec Explore
+
+> 由 `implement-issue` 主 skill 在步驟 3 載入。完成後回到主 skill，繼續載入 `openspec-propose.md`。
+
+## 關於 /opsx:explore
+
+`/opsx:explore` 是 OpenSpec 的斜線指令，在 Claude Code 的聊天框中輸入即可啟動。它是一個**探索對話**，不會建立任何檔案或修改程式碼，專門用來在提案前釐清問題與選項。
+
+⚠️ 不要用 bash 執行 `openspec explore`，那是 CLI 工具，功能不同。`/opsx:explore` 是在 Claude Code 聊天中輸入的斜線指令。
+
+---
+
+## 1. Figma MCP 規則（必讀，本 sub-skill 全程適用）
+
+若 issue 或需求包含 Figma 連結，先載入 `figma-link-guard` skill 並依其規則處理連結開啟與例外狀況。
+
+本步驟屬於需求理解與程式碼探索，**不需要嚴格樣式數值**，遇到 `figma-link-guard` 規則 2（資料過大）時，走「不需嚴格樣式」路徑（可用 `get_screenshot` 輔助定位/理解結構）。
+
+---
+
+## 2. 前置：讀取 Figma 設計稿（有 Figma 連結時執行）
+
+在啟動 `/opsx:explore` **之前**，先完成 Figma 資料擷取：
+
+1. 用 Figma MCP 開啟 issue 中所有 Figma 連結
+2. 記錄關鍵設計資訊（元件結構、樣式規格、互動行為）
+3. 比對 Figma 設計與 issue 文字描述，確認一致性
+4. 若有不一致，停止並詢問使用者，待確認後再繼續
+
+---
+
+## 3. 前置：確認後端 API（issue 提及後端 API 時執行）
+
+若 issue 描述或 `#SPEC` 提到「後端已開好 API」、給出 API router／路徑，或需求明顯要串接後端資料，**直接到 `backend/` 資料夾找出對應實作**，不要向使用者詢問這些細節：
+
+1. 依 issue 提到的路徑或關鍵字，在 `backend/` 搜尋對應的 route／controller
+2. 讀取該 API 的實作，確認：
+   - 實際路由路徑與 HTTP method
+   - request 參數（query／body／path params）與其必填與型別
+   - response 格式（成功與錯誤）
+3. 若 issue 提到的路徑在 `backend/` 找不到對應實作，停止並詢問使用者，不可自行假設 API 已存在或推測其行為
+4. 若找到的 API 行為與 issue 描述不一致（如欄位、路徑不同），停止並詢問使用者，不可自行推測以何者為準
+
+---
+
+## 4. 啟動 /opsx:explore
+
+在 Claude Code 聊天中輸入 `/opsx:explore`，接著把以下資訊帶入探索對話：
+
+- `read-issue` 擷取到的 issue 原始內容（title、body、specs）
+- 步驟 2 讀取到的 Figma 設計摘要（如有）
+- 步驟 3 確認到的後端 API 規格（如有）
+- 你對需求的疑問或不確定點
+
+在探索過程中，請 OpenSpec 協助：
+- 找出與需求相關的程式碼區塊
+- 分析現有架構與實作選項的取捨
+
+---
+
+## 5. 在探索對話中補充確認
+
+`/opsx:explore` 引導程式碼探索時，同步確認以下面向（若 OpenSpec 未主動涵蓋，主動詢問）：
+
+### 4.1 程式碼風格與架構
+- **命名慣例**：變數、函式、檔案
+- **元件結構**：props 定義、狀態管理模式
+- **樣式方案**：CSS Modules / Tailwind / styled-components 等
+- **型別系統**：TypeScript 使用程度
+- **測試慣例**：現有測試結構與 assertion 風格
+
+### 4.2 修改範圍確認
+- 只列出需求範圍內**必須**修改的檔案
+- 不做額外重構或風格統一（除非是需求的一部分）
+- 忽略詳細 UI，可參考 Figma：Link（避免逐像素比對 Figma 細節，範圍容易失控過大）
+- 有邊界決策疑慮時，說明並詢問使用者
+
+---
+
+## 6. 探索完成
+
+`/opsx:explore` 探索對話結束後，向使用者確認：
+- 需求理解是否正確
+- 提案方向是否符合預期
+
+確認後繼續下一步。
+
+## 完成條件
+- Figma 設計（如有）已用 Figma MCP 讀取完畢且與 issue 一致
+- 後端 API（如有）已在 `backend/` 確認實際路由、參數與回應格式，且與 issue 描述一致
+- `/opsx:explore` 探索對話完成
+- 程式碼風格、架構與修改範圍已釐清
+- 使用者確認探索方向正確
+
+接著載入 `sub-skills/openspec-propose.md` 繼續。

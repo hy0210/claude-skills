@@ -1,0 +1,8 @@
+{
+  "name": "figma-link-guard",
+  "version": "1.0.0",
+  "description": "處理 Figma 連結時的安全守則：MCP 失敗即停、資料過大或內容不符時先詢問使用者。",
+  "author": {
+    "name": "hy0210"
+  }
+}

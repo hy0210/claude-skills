@@ -1,0 +1,8 @@
+{
+  "name": "frontend-code-review",
+  "version": "1.0.0",
+  "description": "在原生 /code-review 上疊加團隊約束：只看 /frontend、base branch 限定 version/ 或 dev、繁體中文回覆。",
+  "author": {
+    "name": "hy0210"
+  }
+}
