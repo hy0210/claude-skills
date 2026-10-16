@@ -5,33 +5,9 @@
   },
   "plugins": [
     {
-      "name": "figma-link-guard",
-      "source": "./plugins/figma-link-guard",
-      "description": "處理 Figma 連結時的安全守則：MCP 失敗即停、資料過大或內容不符時先詢問使用者。",
-      "version": "1.0.0"
-    },
-    {
-      "name": "frontend-code-review",
-      "source": "./plugins/frontend-code-review",
-      "description": "在原生 /code-review 上疊加團隊約束：只看 /frontend、base branch 限定 version/ 或 dev、繁體中文回覆。",
-      "version": "1.0.0"
-    },
-    {
-      "name": "implement-issue",
-      "source": "./plugins/implement-issue",
-      "description": "依 GitHub issue 或 Trello 卡片，執行建立分支、需求探索、OpenSpec 提案、實作與驗證的完整流程。",
-      "version": "1.0.0"
-    },
-    {
-      "name": "implement-issue-with-test",
-      "source": "./plugins/implement-issue-with-test",
-      "description": "以 TDD 方式實作 GitHub issue 或 Trello 卡片：Given-When-Then Spec、先寫測試、紅燈綠燈迴圈實作。",
-      "version": "1.0.0"
-    },
-    {
-      "name": "coderabbit-review-triage",
-      "source": "./plugins/coderabbit-review-triage",
-      "description": "逐則分析 CodeRabbit review 建議：解釋問題、評估風險與必要性、提出修改建議，經同意後才修改。",
+      "name": "hy0210",
+      "source": "./plugins/hy0210",
+      "description": "hy0210 的個人 skill 合集：Figma 連結守則、前端 code review、issue 實作流程（含 TDD 版）、CodeRabbit review 分析。",
       "version": "1.0.0"
     }
   ]

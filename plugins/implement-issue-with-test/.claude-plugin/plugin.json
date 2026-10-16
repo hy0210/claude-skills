@@ -1,8 +1,0 @@
-{
-  "name": "implement-issue-with-test",
-  "version": "1.0.0",
-  "description": "以 TDD 方式實作 GitHub issue 或 Trello 卡片：Given-When-Then Spec、先寫測試、紅燈綠燈迴圈實作。",
-  "author": {
-    "name": "hy0210"
-  }
-}

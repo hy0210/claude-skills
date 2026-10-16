@@ -1,43 +1,37 @@
 # claude-skills
 
-個人 Claude Code skill 的 plugin marketplace，每個 skill 各自是一個 plugin，可個別安裝、個別更新。
+hy0210 的個人 Claude Code skill，打包成單一 plugin `hy0210`。
 
 ## 安裝
 
 ```
 /plugin marketplace add hy0210/claude-skills
-/plugin install figma-link-guard@claude-skills
-/plugin install frontend-code-review@claude-skills
-/plugin install implement-issue@claude-skills
-/plugin install implement-issue-with-test@claude-skills
-/plugin install coderabbit-review-triage@claude-skills
+/plugin install hy0210@claude-skills
 ```
 
 建議開啟自動更新：`/plugin` → Marketplaces → `claude-skills` → Enable auto-update。
 
-## Plugins
+## 包含的 Skills
 
-| Plugin | 說明 | 相依 |
-|--------|------|------|
-| figma-link-guard | Figma 連結安全守則 | — |
-| frontend-code-review | 前端 code review 團隊約束 | — |
-| implement-issue | 依 issue 實作的完整流程 | figma-link-guard、OpenSpec |
-| implement-issue-with-test | TDD 版 issue 實作流程 | figma-link-guard、OpenSpec |
-| coderabbit-review-triage | CodeRabbit review 建議分析 | — |
-
-`implement-issue` 與 `implement-issue-with-test` 會在流程中載入 `figma-link-guard`，請一併安裝。
+| 指令 | 說明 |
+|------|------|
+| `/hy0210:figma-link-guard` | Figma 連結安全守則 |
+| `/hy0210:frontend-code-review` | 前端 code review 團隊約束 |
+| `/hy0210:implement-issue` | 依 issue 實作的完整流程（需 OpenSpec） |
+| `/hy0210:implement-issue-with-test` | TDD 版 issue 實作流程（需 OpenSpec） |
+| `/hy0210:coderabbit-review-triage` | CodeRabbit review 建議分析 |
 
 ## 更新流程
 
-1. 修改 `plugins/<name>/skills/<name>/` 內的檔案
-2. 同步提高 `plugins/<name>/.claude-plugin/plugin.json` 與 `.claude-plugin/marketplace.json` 中該 plugin 的 `version`
+1. 修改 `plugins/hy0210/skills/<skill>/` 內的檔案
+2. 同步提高 `plugins/hy0210/.claude-plugin/plugin.json` 與 `.claude-plugin/marketplace.json` 的 `version`
 3. commit 並 push，已開啟自動更新的環境會在下次啟動時取得新版
 
 ## 結構
 
 ```
 .claude-plugin/marketplace.json
-plugins/<name>/
+plugins/hy0210/
 ├── .claude-plugin/plugin.json
-└── skills/<name>/SKILL.md
+└── skills/<skill>/SKILL.md
 ```

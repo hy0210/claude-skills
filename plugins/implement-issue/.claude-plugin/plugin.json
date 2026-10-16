@@ -1,8 +1,0 @@
-{
-  "name": "implement-issue",
-  "version": "1.0.0",
-  "description": "依 GitHub issue 或 Trello 卡片，執行建立分支、需求探索、OpenSpec 提案、實作與驗證的完整流程。",
-  "author": {
-    "name": "hy0210"
-  }
-}

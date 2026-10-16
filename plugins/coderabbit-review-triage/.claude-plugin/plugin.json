@@ -1,8 +1,0 @@
-{
-  "name": "coderabbit-review-triage",
-  "version": "1.0.0",
-  "description": "逐則分析 CodeRabbit review 建議：解釋問題、評估風險與必要性、提出修改建議，經同意後才修改。",
-  "author": {
-    "name": "hy0210"
-  }
-}
