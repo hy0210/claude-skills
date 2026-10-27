@@ -17,6 +17,7 @@ hy0210 的個人 Claude Code skill，打包成單一 plugin `hy0210`。
 |------|------|
 | `/hy0210:figma-link-guard` | Figma 連結安全守則 |
 | `/hy0210:code-review-general` | code review：先確認範圍，逐項確認後統一修改 |
+| `/hy0210:simplify-general` | 精簡程式碼：先列出要改什麼，同意後才修改 |
 | `/hy0210:implement-issue` | 依 issue 實作的完整流程（需 OpenSpec） |
 | `/hy0210:implement-issue-with-test` | TDD 版 issue 實作流程（需 OpenSpec） |
 | `/hy0210:coderabbit-review-triage` | CodeRabbit review 建議分析 |

@@ -1,6 +1,6 @@
 ---
 name: code-review-general
-description: 在使用者要求 code review、review 變更、review PR 或呼叫 /code-review 時使用。開始前先向使用者確認 base branch、審查範圍（/frontend 或不限）與 effort 等級，審查後以繁體中文依嚴重性分類回報，逐項與使用者確認處置，全部確認完才統一修改。
+description: 在使用者要求 code review、review 變更、review PR 或呼叫 /code-review 時使用。開始前先向使用者確認 base branch、審查範圍（/frontend 或不限）與 effort 等級，審查後以繁體中文依嚴重性分類回報，逐項與使用者確認處置，全部確認完先 stage 未 commit 的檔案，再統一修改。
 ---
 
 # Code Review General
@@ -55,5 +55,6 @@ description: 在使用者要求 code review、review 變更、review PR 或呼�
 ## 5. 統一修改
 
 - 所有項目都已決定（沒有「待確認」；未回覆的已視為略過）後，才一次修改所有標為「改」的項目。
+- 動手修改之前，先把目前所有未 commit 的檔案 stage（`git add -A`），讓使用者之後用 `git diff` 只看到這次的修改。
 - 修改只涵蓋標為「改」的項目，不順手改其他地方。
 - 修改完成後回報：每個編號對應改了哪些檔案；略過的項目列出編號即可。
